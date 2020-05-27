@@ -22,4 +22,4 @@ class PostImage(models.Model):
     image = models.ImageField(upload_to='posts/%Y/%m/%d')
 
     def __str__(self):
-        return self.post
+        return self.post.tweet
