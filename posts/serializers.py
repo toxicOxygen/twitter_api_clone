@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.contrib.auth import get_user_model
 from .models import Post,PostImage
 from comments.api.serializers import CommentSerializer
 
@@ -14,8 +15,10 @@ class PostSerializer(serializers.ModelSerializer):
     def create(self,validated_data):
         images_data = self.context['request'].FILES
         print(self.context['request'].user) #todo if it works add it user
+        user = get_user_model().objects.filter(id=validated_data.get('userId'))[0]
         post = Post.objects.create(
-            user=self.context['request'].user,
+            # user=self.context['request'].user,
+            user = user,
             tweet=validated_data.get('tweet') 
         )
         for im in images_data.getlist('file'):
