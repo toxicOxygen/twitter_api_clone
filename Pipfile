@@ -11,6 +11,8 @@ pillow = "*"
 djangorestframework = "*"
 django-rest-auth = "*"
 django-cors-headers = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.8"
