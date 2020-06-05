@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 # Create your models here.
 
 class Post(models.Model):
-    user = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='posts')
+    user = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='posts',blank=True)
     tweet = models.CharField(max_length=280)
     created = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)

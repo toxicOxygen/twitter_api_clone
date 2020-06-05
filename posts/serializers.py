@@ -15,7 +15,7 @@ class PostSerializer(serializers.ModelSerializer):
     def create(self,validated_data):
         images_data = self.context['request'].FILES
         print(self.context['request'].user) #todo if it works add it user
-        user = get_user_model().objects.filter(id=validated_data.get('userId'))[0]
+        user = get_user_model().objects.filter(id=validated_data.get('user'))[0]
         post = Post.objects.create(
             # user=self.context['request'].user,
             user = user,
