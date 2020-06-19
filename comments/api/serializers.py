@@ -8,9 +8,10 @@ from users.api.serializers import UserSerializer
 
 class CommentSerializer(serializers.ModelSerializer):
     user = UserSerializer(many=False,read_only=True)
+
     class Meta:
         model = Comment
-        fields = ['id','comment','user','post','created']
+        fields = ['id','comment','user','post','created','likes']
     
     def create(self,validated_data):
         post_id = validated_data.get('post')
