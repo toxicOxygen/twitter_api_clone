@@ -1,5 +1,6 @@
 # twitter_api_clone
-This is a project attempts to imitate the twitter API. Per the settings of the project you must be authenticated before you can use this API
+This is a project attempts to imitate the twitter API. Per the settings of the project you must be authenticated before you can use this API.
+After authenticating you will be assigned a token with which you will access the API
 
 ### API Endpoints
 * /api/v1/rest-auth/login/
@@ -25,3 +26,21 @@ This is a project attempts to imitate the twitter API. Per the settings of the p
   + this method only accepts **[POST]** requests and it expects the following
     + *id* of the post
     + *action*  which one of the following 2 **"like"** or **"unlike"**
+
+* /api/v1/comments/create/
+  + this endpoint accepts **[POST]** requests only and expects to receive the following data
+    + *post* which is the id of the post you want to comment on
+    + *comment* which is the String you want add as a comment
+ 
+* /api/v1/users/
+  + this endpoint accepts only **[GET]** request and return the list of users in the application
+  
+* /api/v1/users/<int:pk>/
+  + this endpoint is restricted; if user accessing this endpoint is the same as the user object, then **[PUT]** and **[GET]** method will be allowed otherwise **[GET]** request is the only method allowed
+  
+* /api/v1/users/follow/
+  + this endpoint allow only **[POST]** requests and it expects the following data
+    + *id* which will represent the ID of the user you want to follow
+    + *action* which is one of these 2 options "follow" or "unfollow"
+* /api/v1/users/current_user/
+  + accepts **[GET]** request and request the detail of current user
