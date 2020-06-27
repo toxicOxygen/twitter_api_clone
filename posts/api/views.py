@@ -22,13 +22,14 @@ class LikePostView(APIView):
         try:
             id = request.POST['id']
             action = request.POST['action']
-            post = get_object_or_404(Post,id=id)
+            post = Post.objects.get(id=id)
             if action == 'like':
                 post.users_like.add(request.user)
                 create_action(request.user,'liked',target=post)
             else:
                 post.users_like.remove(request.user)
-            return Response({'status':'ok'})
+            res_obj = PostSerializer(instance=post)
+            return Response(res_obj.data)
         except :
             return Response({'status':'ko'})
         
